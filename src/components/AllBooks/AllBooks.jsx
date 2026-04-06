@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import BookCard from "../ui/BookCard";
 
 const bookPromise = fetch('/booksData.json').then(res => res.json());
