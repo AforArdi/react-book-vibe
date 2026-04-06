@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const ErrorPage = () => {
     return ( 
         <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
@@ -18,9 +20,9 @@ const ErrorPage = () => {
 
                 {/* Actions */}
                 <div className="mt-6 flex justify-center gap-4">
-                    <a href="/" className="btn btn-primary">
+                    <Link to={'/'} className="btn btn-primary">
                         Go Home
-                    </a>
+                    </Link>
                 </div>
 
             </div>
