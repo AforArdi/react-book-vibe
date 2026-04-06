@@ -11,7 +11,7 @@ const BookDetails = () => {
     const { bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = expectedBook;
 
     // context api
-    const {handleMarkAsRead} = useContext(BookContext);
+    const {handleMarkAsRead, handleWishList} = useContext(BookContext);
     
     return (
         <div className="card lg:card-side bg-base-100 shadow-sm grid grid-cols-2 container mx-auto my-6">
@@ -42,7 +42,7 @@ const BookDetails = () => {
 
                 <div className="card-actions">
                     <button className="btn" onClick={()=> handleMarkAsRead(expectedBook)}>Add to Read</button>
-                    <button className="btn btn-secondary">Add to Wishlist</button>
+                    <button className="btn btn-secondary" onClick={()=> handleWishList(expectedBook)}>Add to Wishlist</button>
                 </div>
             </div>
         </div>
