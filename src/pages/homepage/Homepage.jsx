@@ -1,8 +1,12 @@
+import AllBooks from '../../components/AllBooks/AllBooks';
 import Banner from '../../components/homepage/Banner';
 
 const Homepage = () => {
     return ( 
-        <Banner></Banner>
+        <div>
+            <Banner></Banner>
+            <AllBooks></AllBooks>
+        </div>
      );
 }
  
