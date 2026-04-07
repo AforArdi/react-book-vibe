@@ -1,10 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BookContext } from "../../contexts/BookProvider";
 import BookCard from "../ui/BookCard";
 import { FaBookmark } from "react-icons/fa";
 
-const ListedWishList = () => {
+const ListedWishList = ({sortingType}) => {
     const {wishList} = useContext(BookContext);
+
+    const [sortedWishList, setSortedWishList] = useState(wishList);
+    useEffect(()=>{
+        if(sortingType){
+            if(sortingType === 'pages'){
+                const sortedData = [...wishList].sort((a, b)=> a.totalPages - b.totalPages);
+                setSortedWishList(sortedData);
+            } else if (sortingType === 'rating'){
+                const sortedData = [...wishList].sort((a, b)=> a.rating - b.rating);
+                setSortedWishList(sortedData);
+            } else if(sortingType === 'year'){
+                const sortedData = [...wishList].sort((a, b)=> a.yearOfPublishing - b.yearOfPublishing);
+                setSortedWishList(sortedData);
+            }
+        }
+    }, [sortingType, wishList])
 
     if(wishList.length === 0){
         return (
@@ -18,7 +34,7 @@ const ListedWishList = () => {
     return ( 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {
-                wishList.map(book=> <BookCard
+                sortedWishList.map(book=> <BookCard
                 key={book.bookId}
                 book={book}
                 ></BookCard>)
